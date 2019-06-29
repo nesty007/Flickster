@@ -5,9 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    
-    >
 
+    >
+    <ListView
+        android:layout_above="@id/etNewItem"
+        android:id="@+id/lvItems"
+        android:layout_width="match_parent"
+        android:layout_height="538dp" />
     <Button
         android:id="@+id/btnAddItem"
         android:layout_width="111dp"
@@ -20,22 +24,24 @@
         android:layout_marginBottom="5dp"
         android:onClick="onAdditem"
         android:text="ADD"
+        android:layout_above="@id/lvItems"
         />
 
     <EditText
         android:id="@+id/etNewItem"
-        android:layout_width="283dp"
+        android:layout_width="189dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnAddItem"
+        android:layout_alignRight="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="203dp"
+        android:layout_marginRight="203dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:hint="Add a New Item Here"
         android:inputType="textPersonName" />
 
-    <ListView
-        android:id="@+id/lvItems"
-        android:layout_width="match_parent"
-        android:layout_height="538dp" />
+
 
 </RelativeLayout>
 
