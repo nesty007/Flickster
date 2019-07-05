@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             writeItems();
             // notity the user the opera
             Toast.makeText(this, "Item updated successfully", Toast.LENGTH_SHORT).show();
+
         }
     }
 

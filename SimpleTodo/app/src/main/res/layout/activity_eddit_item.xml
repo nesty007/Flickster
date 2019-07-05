@@ -4,18 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EdditItemActivity">
+    tools:context=".EdditItemActivity"
+    android:background="@drawable/bgst">
 
     <EditText
         android:id="@+id/etItemText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/enter_item_description"
         android:inputType="textMultiLine"
+        android:textColor="@color/textColor"
         tools:layout_editor_absoluteX="-2dp"
         tools:layout_editor_absoluteY="-3dp" />
+
 
     <Button
         android:id="@+id/btnSave"
@@ -24,9 +29,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="49dp"
         android:onClick="onsaveItem"
-        android:layout_marginTop="48dp"
         android:text="@string/save" />
 </RelativeLayout>
