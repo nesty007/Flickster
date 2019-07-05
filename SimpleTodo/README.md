@@ -22,9 +22,9 @@ The following **additional** features are implemented:
 
 * [x] List anything else that you can get done to improve the app functionality!
 
-- Default App Icon changed
-- Background added
-- Default Color modified
+- Default App Icon changed.
+- Background added.
+- Default Color modified.
 
 ## Video Walkthrough
 
