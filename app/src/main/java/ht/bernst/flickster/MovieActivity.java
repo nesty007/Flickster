@@ -1,9 +1,12 @@
 package ht.bernst.flickster;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -12,9 +15,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
+import ht.bernst.flickster.adapters.MoviesAdapters;
 import ht.bernst.flickster.models.Movie;
 
 public class MovieActivity extends AppCompatActivity {
@@ -23,11 +28,24 @@ public class MovieActivity extends AppCompatActivity {
 
     List<Movie> movies;
 
+    //Add RecyclerView support library to the Gradle build file - DONE
+    //Define a model class to use as the data source - DONE
+    //Add a RecyclerView to your activity to display the items - DONE
+    //Create a custom row layout XML file to visualize the item - DONE
+    //Create a RecyclerView.Adapter and ViewHolder to render the item - DONE
+    //Bind the adapter to the data source to populate the RecyclerView
 
+
+    @SuppressLint("WrongConstant")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.movie_main);
+        setContentView(R.layout.activity_movie);
+        RecyclerView rvMovies = findViewById(R.id.rvMovies);
+        movies = new ArrayList<>();
+        final MoviesAdapters adapter = new MoviesAdapters(this, movies);
+        rvMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvMovies.setAdapter(adapter);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(MOVIE_URL, new JsonHttpResponseHandler() {
@@ -35,7 +53,8 @@ public class MovieActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                   JSONArray movieJsonArray = response.getJSONArray("results");
-                  movies = Movie.fromJsonArray(movieJsonArray);
+                  movies.addAll(Movie.fromJsonArray(movieJsonArray));
+                  adapter.notifyDataSetChanged();
                   Log.d("smile", movies.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
