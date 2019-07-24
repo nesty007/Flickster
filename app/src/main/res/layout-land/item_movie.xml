@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000">
+
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_margin="5dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/ivPoster"
+        android:gravity="center"
+        android:text="@string/spider_man_far_from_home"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTitle"
+        android:layout_margin="5dp"
+        android:layout_toEndOf="@id/ivPoster"
+        android:text="@string/peter_parker_and_his_friends_go_on_a_summer_trip_to_europe_however_they_will_hardly_be_able_to_rest_peter_will_have_to_agree_to_help_nick_fury_uncover_the_mystery_of_creatures_that_cause_natural_disasters_and_destruction_throughout_the_continent"
+        android:textColor="#ffffff" />
+</RelativeLayout>

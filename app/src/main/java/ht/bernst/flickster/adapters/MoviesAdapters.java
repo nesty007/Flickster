@@ -1,12 +1,14 @@
 package ht.bernst.flickster.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,20 +58,29 @@ public class MoviesAdapters extends RecyclerView.Adapter<MoviesAdapters.viewHold
 
         TextView tvTitle;
         TextView tvOverview;
+        ImageView ivBackDrop;
         ImageView ivPoster;
 
-        public viewHolder( View itemView) {
+        public viewHolder(View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
         }
 
-        public void bind(Movie movie) {
-           tvTitle.setText(movie.getTitle());
-           tvOverview.setText(movie.getOverview());
-           Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
-
+        public void bind(final Movie movie) {
+            tvTitle.setText(movie.getTitle());
+            tvOverview.setText(movie.getOverview());
+            String imageUrl = movie.getPosterPath();
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                imageUrl= movie.getBackdropPath(); }
+            Glide.with(context).load(imageUrl).into(ivPoster);
+            tvTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
