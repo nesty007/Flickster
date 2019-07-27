@@ -3,8 +3,14 @@ package ht.bernst.flickster;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.SearchView;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,11 +28,15 @@ import cz.msebera.android.httpclient.Header;
 import ht.bernst.flickster.adapters.MoviesAdapters;
 import ht.bernst.flickster.models.Movie;
 
+
+
 public class MovieActivity extends AppCompatActivity {
 
     private static final String MOVIE_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
     List<Movie> movies;
+
+
 
     //Add RecyclerView support library to the Gradle build file - DONE
     //Define a model class to use as the data source - DONE
@@ -66,5 +76,17 @@ public class MovieActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
+
+    private void setSupportActionBar(Toolbar toolbar) {
+
+    }
+
+
+
 }
+
+
+
